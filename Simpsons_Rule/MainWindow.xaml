@@ -1,0 +1,157 @@
+﻿<Window x:Class="Simpsons_Rule.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simpsons_Rule"
+        mc:Ignorable="d"
+        Title="Simpson's Rule" 
+        ResizeMode="CanMinimize" 
+        ShowInTaskbar="True" 
+        SizeToContent="WidthAndHeight" 
+        Topmost="False" 
+        Cursor="ArrowCD">
+    <GroupBox Header="Вычисление определённого интеграла функций методом Симпсона">
+        <UniformGrid Rows="1" Columns="2" Margin="0,0,0,0" >
+            <Grid Margin="0,0,120,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="95"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Выберете функцию"
+                       Background="DarkBlue"
+                       Foreground="Yellow"
+                       FontWeight="Bold"
+                       Width="120"
+                       FontFamily="Consolas" 
+                       Margin="35,34,35,35"
+                       Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+
+                <ComboBox Name="FunctionsList" 
+                          HorizontalAlignment="Left" 
+                          Foreground="DarkBlue" 
+                          Width="100" 
+                          Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,34,0,35">
+                    <ComboBoxItem IsSelected="True" >
+                        <TextBlock>x^2+14x-4</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>e^(12x)</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>x-0.158</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>7sin(x-9)</TextBlock>
+                    </ComboBoxItem>
+                </ComboBox>
+
+                <Label Content="Поля для задания пределов:"
+                       Background="DarkBlue"
+                       Foreground="Yellow"
+                       Width="180"
+                       Height="25"
+                       FontWeight="Bold"
+                       FontFamily="Consolas"
+                       Grid.Column="0" 
+                       Grid.Row="1" 
+                       Grid.ColumnSpan="2" 
+                       Grid.RowSpan="2"/>
+
+                <TextBox Name="UpperLimit"
+                         Grid.Column="2" 
+                         Grid.Row="1" 
+                         Grid.ColumnSpan="2" 
+                         BorderBrush="Black" 
+                         MaxLength="10"
+                         MaxLines="1"
+                         TextAlignment="Center"
+                         LostFocus="LimitsTextBox_LostFocus"
+                         Margin="5,10,5,10">
+                    1
+                </TextBox>
+
+                <TextBox Name="LowerLimit" Grid.Column="2" 
+                         Grid.Row="2" 
+                         Grid.ColumnSpan="2" 
+                         BorderBrush="Black" 
+                         MaxLength="10"
+                         MaxLines="1"
+                         TextAlignment="Center"
+                         LostFocus="LimitsTextBox_LostFocus"
+                         Margin="5,10,5,10">
+                    0
+                </TextBox>
+
+                <Label Content="Поле для задания погрешности:"
+                       Background="DarkBlue"
+                       Foreground="Yellow"
+                       FontWeight="Bold"
+                       FontFamily="Consolas"
+                       Width="200"
+                       Height="25"
+                       Grid.Column="0" 
+                       Grid.Row="3" 
+                       Grid.ColumnSpan="2" 
+                       Grid.RowSpan="1" />
+
+                <TextBox Name="Accuracy" 
+                         Grid.Column="2" 
+                         Grid.Row="3" 
+                         Grid.ColumnSpan="2" 
+                         BorderBrush="Black" 
+                         MaxLength="10"
+                         MaxLines="1"
+                         Height="20"
+                         TextAlignment="Center"
+                         LostFocus="LimitsTextBox_LostFocus"
+                         Margin="5,0">
+                    0.1
+                </TextBox>
+
+                <Button Name="Solve"
+                        Content="Найти значение интеграла"
+                        Background="LightGreen" 
+                        Click="SolveTheIntegral" 
+                        Grid.Column="0" 
+                        Grid.Row="4" 
+                        Grid.ColumnSpan="2" Margin="45,32,45,33"/>
+
+                <Button Name="Test2"  Click="Backhitch"
+                        Content="Сбросить всё" 
+                        Background="LightPink" 
+                        Grid.Column="2" 
+                        Grid.Row="4" 
+                        Grid.ColumnSpan="2" Margin="0,32,0,33"/>
+            </Grid>
+
+            <ScrollViewer Name="ConsoleScrollViewer" 
+                          Margin="-100,10,10,10"
+                          Height="340"
+                          VerticalScrollBarVisibility="Auto">
+                <TextBlock Name="OutputConsole"
+                           Background="DarkBlue"
+                           FontSize="15"
+                           Foreground="Yellow"
+                           FontWeight="Bold"
+                           FontFamily="Consolas"
+                           TextWrapping="Wrap" 
+                           Padding="5"/>
+            </ScrollViewer>
+            
+            
+
+
+        </UniformGrid>
+    </GroupBox>
+</Window>
