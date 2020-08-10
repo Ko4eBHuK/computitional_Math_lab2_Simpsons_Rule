@@ -31,7 +31,7 @@ namespace Simpsons_Rule
         {
             double upperLimitValue = Double.Parse(UpperLimit.Text.Replace(".", ","));
             double lowerLimitValue = Double.Parse(LowerLimit.Text.Replace(".", ","));
-            double accuracy = Double.Parse(Accuracy.Text.Replace(".", ","));
+            double accuracy = Math.Abs(Double.Parse(Accuracy.Text.Replace(".", ",")));
             int functionIndex = FunctionsList.SelectedIndex;
 
             OutputConsole.Text += "Выбрана функция f(x)=";
