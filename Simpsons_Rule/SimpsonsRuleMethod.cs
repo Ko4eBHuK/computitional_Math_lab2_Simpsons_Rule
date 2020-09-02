@@ -43,9 +43,9 @@ namespace Simpsons_Rule
                 IntegralValueN += GetFunctionValueInPoint(LowerLimit);
                 for (int i = 1; i < n; i++)
                 {
-                    IntegralValueN += 4 * GetFunctionValueInPoint(i * StepValue);
+                    IntegralValueN += 4 * GetFunctionValueInPoint(LowerLimit + i * StepValue);
                     i++;
-                    IntegralValueN += 2 * GetFunctionValueInPoint(i * StepValue);
+                    IntegralValueN += 2 * GetFunctionValueInPoint(LowerLimit + i * StepValue);
                 }
                 IntegralValueN += GetFunctionValueInPoint(UpperLimit);
                 IntegralValueN *= StepValue;
@@ -57,9 +57,9 @@ namespace Simpsons_Rule
                 IntegralValueTwoN += GetFunctionValueInPoint(LowerLimit);
                 for (int i = 1; i < n; i++)
                 {
-                    IntegralValueTwoN += 4 * GetFunctionValueInPoint(i * StepValue);
+                    IntegralValueTwoN += 4 * GetFunctionValueInPoint(LowerLimit + i * StepValue);
                     i++;
-                    IntegralValueTwoN += 2 * GetFunctionValueInPoint(i * StepValue);
+                    IntegralValueTwoN += 2 * GetFunctionValueInPoint(LowerLimit + i * StepValue);
                 }
                 IntegralValueTwoN += GetFunctionValueInPoint(UpperLimit);
                 IntegralValueTwoN *= StepValue;
