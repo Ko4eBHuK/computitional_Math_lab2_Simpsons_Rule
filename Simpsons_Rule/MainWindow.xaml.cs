@@ -47,7 +47,7 @@ namespace Simpsons_Rule
             OutputConsole.Text += Math.Round(solution.IntegralValueN, 8);
             OutputConsole.Text += "\n";
 
-            OutputConsole.Text += "Погрешность решения равна ";
+            OutputConsole.Text += "Погрешность решения по правилу Рунге равна ";
             OutputConsole.Text += Math.Round(solution.CalculatedAccuracy, 8);
             OutputConsole.Text += "\n";
 
@@ -59,8 +59,8 @@ namespace Simpsons_Rule
             }
             else
             {
-                OutputConsole.Text += "Количество шагов для достижения требуемой точности\nпревышает миллион.\n";
-                OutputConsole.Text += "Метод Симпсона не является оптимальным для данного\nинтеграла на данных пределах";
+                OutputConsole.Text += "Количество шагов для достижения требуемой точности\nпревышает 10^18.\n";
+                OutputConsole.Text += "Метод Симпсона не является наиболее подходящим для данного\nинтеграла на данных пределах";
                 OutputConsole.Text += "\n";
             }
 
@@ -95,6 +95,14 @@ namespace Simpsons_Rule
             UpperLimit.Text = "1";
             LowerLimit.Text = "0";
             FunctionsList.SelectedIndex = 0;
+        }
+
+        private void FunctionsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FunctionsList.SelectedIndex == 1)
+            {
+                OutputConsole.Text += "[[[Вычисление значения интеграла выбранной функции\n[[[может занять большое количество времени\n[[[в зависимости от выбранных пределов.";
+            }
         }
     }
 }

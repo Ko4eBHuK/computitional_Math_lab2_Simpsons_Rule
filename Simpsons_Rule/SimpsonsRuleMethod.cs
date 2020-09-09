@@ -8,7 +8,7 @@ namespace Simpsons_Rule
         public double UpperLimit { get; set; }
         public double IntegralValueN { get; set; }
         public double IntegralValueTwoN { get; set; }
-        public int StepCount { get; set; }
+        public ulong StepCount { get; set; }
         public double StepValue { get; set; }
         public double CalculatedAccuracy { get; set; }
         private double Accuracy { get; set; }
@@ -34,14 +34,14 @@ namespace Simpsons_Rule
         {
             IntegralValueN = 0;
             IntegralValueTwoN = 0;
-            int n = 4;
+            ulong n = 4;
 
             do
             {
                 StepValue = (UpperLimit - LowerLimit) / n;
 
                 IntegralValueN += GetFunctionValueInPoint(LowerLimit);
-                for (int i = 1; i < n; i++)
+                for (ulong i = 1; i < n; i++)
                 {
                     IntegralValueN += 4 * GetFunctionValueInPoint(LowerLimit + i * StepValue);
                     i++;
@@ -55,7 +55,7 @@ namespace Simpsons_Rule
                 StepValue = (UpperLimit - LowerLimit) / n;
 
                 IntegralValueTwoN += GetFunctionValueInPoint(LowerLimit);
-                for (int i = 1; i < n; i++)
+                for (ulong i = 1; i < n; i++)
                 {
                     IntegralValueTwoN += 4 * GetFunctionValueInPoint(LowerLimit + i * StepValue);
                     i++;
@@ -67,7 +67,7 @@ namespace Simpsons_Rule
 
                 CalculatedAccuracy = Math.Abs(IntegralValueN - IntegralValueTwoN) / 15;
             }
-            while (n < 1000000 & CalculatedAccuracy >= Accuracy);
+            while (n < 1000000000000000000 & CalculatedAccuracy >= Accuracy);
 
             StepCount = n / 2;
         }
